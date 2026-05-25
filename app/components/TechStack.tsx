@@ -26,7 +26,7 @@ export function TechStack() {
 
   const techCategories = [
     {
-      category: '🔧 Backend',
+      category: 'Backend',
       icon: Server,
       color: 'from-blue-500 to-cyan-500',
       techs: [
@@ -40,7 +40,7 @@ export function TechStack() {
       ],
     },
     {
-      category: '🎨 Frontend',
+      category: 'Frontend',
       icon: Globe,
       color: 'from-purple-500 to-pink-500',
       techs: [
@@ -53,7 +53,7 @@ export function TechStack() {
       ],
     },
     {
-      category: '⚙️ DevOps',
+      category: 'DevOps',
       icon: Box,
       color: 'from-orange-500 to-red-500',
       techs: [
@@ -89,7 +89,7 @@ export function TechStack() {
           </div>
 
           {/* Tech Categories Grid */}
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid w-[92vw] lg:grid-cols-3 gap-8">
             {techCategories.map((category, categoryIndex) => (
               <div
                 key={categoryIndex}
@@ -100,6 +100,7 @@ export function TechStack() {
                     : 'none',
                 }}
               >
+
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`p-3 rounded-xl bg-linear-to-br ${category.color} shadow-lg`}>
@@ -109,23 +110,21 @@ export function TechStack() {
                 </div>
 
                 {/* Tech Cards */}
-                <div className="space-y-3">
+                <div className="grid grid-cols-4 gap-4">
                   {category.techs.map((tech, techIndex) => (
                     <div
                       key={techIndex}
-                      className="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+                      className="flex flex-col justify-center size-28 p-4 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium">{tech.name}</span>
-                        <span className="text-sm text-foreground/60">{tech.level}%</span>
+                      <div className="flex justify-center mb-3">
+                        <span className="font-medium text-center">{tech.name}</span>
                       </div>
 
-                      {/* Progress Bar */}
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                      {/* Decorative Bar */}
+                      <div className="w-full h-2 rounded-full overflow-hidden">
                         <div
-                          className={`h-full bg-linear-to-r ${category.color} rounded-full transition-all duration-1000 ease-out`}
+                          className={`w-full h-full bg-linear-to-r ${category.color} rounded-full transition-all duration-1000 ease-out`}
                           style={{
-                            width: isVisible ? `${tech.level}%` : '0%',
                             transitionDelay: `${(categoryIndex * 0.2 + techIndex * 0.1)}s`,
                           }}
                         ></div>

@@ -8,21 +8,19 @@ import { TechStack } from './components/TechStack';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { PageLoader } from './components/PageLoader';
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Verifica preferência do sistema ou localStorage
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'light') {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+    } else {
       setIsDark(true);
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -37,7 +35,6 @@ function App() {
     }
   };
 
-  // Scroll suave para todas as âncoras
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
     return () => {
@@ -47,7 +44,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <PageLoader />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
 
       <main>
